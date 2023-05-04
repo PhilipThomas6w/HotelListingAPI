@@ -32,7 +32,7 @@ public class HotelListingDbContext : DbContext
             new Country
             {
                 Id = 3,
-                Name = "Cayman Islands",
+                Name = "Cayman Island", // deliberate spelling mistake, we will correct with a PUT request later
                 ShortName = "CI"
             }
         );
