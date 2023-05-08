@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HotelListingAPI.Data;
+using HotelListingAPI.Models.Country;
 
 namespace HotelListingAPI.Controllers
 {
@@ -83,13 +84,19 @@ namespace HotelListingAPI.Controllers
         // POST: api/Countries
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Country>> PostCountry(Country country)
+        public async Task<ActionResult<Country>> PostCountry(CountryDto countryDto) 
         {
           if (_context.Countries == null)
           {
-              return Problem("Entity set 'HotelListingDbContext.Countries'  is null.");
+              return Problem("Entity set 'HotelListingDbContext.Countries' is null.");
           }
-            _context.Countries.Add(country);
+
+          var country = new Country
+          {
+              Name = countryDto.Name,
+              ShortName = countryDto.ShortName
+          };
+          _context.Countries.Add(country);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCountry", new { id = country.Id }, country); // returns the response and the endpoint
