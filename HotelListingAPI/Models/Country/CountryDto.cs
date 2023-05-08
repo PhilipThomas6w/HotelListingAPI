@@ -1,12 +1,12 @@
-﻿using Microsoft.Build.Framework;
-
-namespace HotelListingAPI.Models.Country;
+﻿namespace HotelListingAPI.Models.Country;
 
 public class CountryDto
 {
-    
-    [Required]
+    public int Id { get; set; }
+
     public string Name { get; set; }
+
     public string ShortName { get; set; }
 
+    public List<HotelDto> Hotels { get; set; }
 }

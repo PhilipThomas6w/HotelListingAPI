@@ -8,7 +8,8 @@ namespace HotelListingAPI.Configurations
     {
         public AutomapperConfig()
         {
-            CreateMap<Country, CountryDto>().ReverseMap(); // <source, destination> ... ReverseMap() allows us to map in either direction
+            CreateMap<Country, CreateCountryDto>().ReverseMap(); // <source, destination> ... ReverseMap() allows us to map in either direction
+            CreateMap<Country, GetCountryDto>().ReverseMap();
         }
     }
 }
